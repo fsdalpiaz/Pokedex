@@ -1,10 +1,6 @@
-const offset = 0;
-const limit = 10;
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-
-//função sintaxe reduzida,
-//sem contexto, usado quando tem callback ou
-//contexto isolado, não precisa declarar o corpo da função
+const offset = 0
+const limit = 10
+const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 
 function convertPokemonToLi(pokemon) {
   return `
@@ -22,22 +18,22 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
-const pokemonList = document.getElementsById('pokemonList')
+const pokemonList = document.getElementById('pokemonList')
 
-fetch(url)
-  .then((response) => response.json())
-  .then((jsonBody) => jsonBody.results)
-  .then((pokemonList) => {
-    //debugger;
-    for (let i = 0; i < pokemonList.length; i++) {
-      const pokemon = pokemonList[i];
-      console.log(convertPokemonToLi(pokemon))
-      
-      
+pokeApi.getPokemons().then((pokemons) => {
+  //debugger;
+  const listItems = []
 
-    }
-  })
-  .catch((error) => console.error(error));
+  pokemons.map()
+
+  for (let i = 0; i < pokemons.length; i++) {
+    const pokemon = pokemons[i];
+    listItems.push(convertPokemonToLi(pokemon))
+  }
+    
+  pokemonList.innerHTML += convertPokemonToLi(pokemon)
+})
+
 
 // fetch(url)
 //   .then(function (response) { //função anônima
